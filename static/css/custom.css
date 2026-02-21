@@ -294,13 +294,13 @@ footer a:hover {
     }
 }
 
-/* PDF Preview Styles */
-.pdf-preview-modal {
+/* File Preview Styles */
+.file-preview-modal {
     max-width: 90vw;
     max-height: 90vh;
 }
 
-.pdf-preview-iframe {
+.file-preview-iframe {
     width: 100%;
     height: 70vh;
     border: none;

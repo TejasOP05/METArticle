@@ -5,9 +5,14 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from sqlalchemy.orm import DeclarativeBase
 from werkzeug.middleware.proxy_fix import ProxyFix
+from dotenv import load_dotenv
+from whitenoise import WhiteNoise
+
+# Load environment variables from .env if present
+load_dotenv()
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 class Base(DeclarativeBase):
     pass
@@ -17,14 +22,12 @@ login_manager = LoginManager()
 
 # Create the app
 app = Flask(__name__)
-# Ensure a secret key is always set for sessions/CSRF
-_secret = os.environ.get("SESSION_SECRET")
-if not _secret:
-    logging.warning("SESSION_SECRET not set; using insecure development default. Set SESSION_SECRET in the environment for production.")
-    _secret = "dev-secret-change-me"
-app.secret_key = _secret
-app.config["WTF_CSRF_SECRET_KEY"] = _secret
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+
+# Ensure a secret key is always set for sessions/CSRF
+app.secret_key = os.environ.get("SESSION_SECRET", "dev-secret-unsafe")
+app.config["WTF_CSRF_SECRET_KEY"] = app.secret_key
 
 # Configure the database
 # Prefer DATABASE_URL if provided; otherwise use SQLite at /data for persistence in containers

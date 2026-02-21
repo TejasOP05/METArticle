@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <h3>{{ article.title }}</h3>
-                    
+
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <strong>Author:</strong> {{ article.author.full_name }}<br>
@@ -43,7 +43,7 @@
 
                     <div class="border-top pt-3">
                         <strong>File Information:</strong><br>
-                        <i class="fas fa-file-pdf me-1"></i>{{ article.original_filename }} 
+                        <i class="fas fa-file-alt me-1"></i>{{ article.original_filename }}
                         ({{ format_file_size(article.file_size) }})
                     </div>
                 </div>
@@ -59,26 +59,28 @@
                 <div class="card-body">
                     <form method="POST">
                         {{ form.hidden_tag() }}
-                        
+
                         <div class="mb-3">
                             {{ form.status.label(class="form-label fw-bold") }}
                             {{ form.status(class="form-select" + (" is-invalid" if form.status.errors else "")) }}
                             {% if form.status.errors %}
-                                <div class="invalid-feedback">
-                                    {% for error in form.status.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="invalid-feedback">
+                                {% for error in form.status.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
 
                         <div class="mb-3">
                             {{ form.comment.label(class="form-label fw-bold") }}
-                            {{ form.comment(class="form-control" + (" is-invalid" if form.comment.errors else ""), rows="4", placeholder="Provide detailed feedback for the author...") }}
+                            {{ form.comment(class="form-control" + (" is-invalid" if form.comment.errors else ""),
+                            rows="4", placeholder="Provide detailed feedback for the author...") }}
                             {% if form.comment.errors %}
-                                <div class="invalid-feedback">
-                                    {% for error in form.comment.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="invalid-feedback">
+                                {% for error in form.comment.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
-                            <div class="form-text">Optional: Provide constructive feedback to help the author improve their work.</div>
+                            <div class="form-text">Optional: Provide constructive feedback to help the author improve
+                                their work.</div>
                         </div>
 
                         <div class="alert alert-info">
@@ -115,14 +117,13 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid">
-                        <a href="{{ url_for('download_article', id=article.id) }}" 
-                           class="btn btn-primary">
-                            <i class="fas fa-download me-2"></i>Download PDF
+                        <a href="{{ url_for('download_article', id=article.id) }}" class="btn btn-primary">
+                            <i class="fas fa-download me-2"></i>Download File
                         </a>
                     </div>
                     <div class="text-center mt-3">
                         <small class="text-muted">
-                            <i class="fas fa-file-pdf me-1"></i>{{ article.original_filename }}
+                            <i class="fas fa-file-alt me-1"></i>{{ article.original_filename }}
                         </small>
                     </div>
                 </div>
@@ -180,12 +181,13 @@
                     <dl class="row small mb-0">
                         <dt class="col-6">File Size:</dt>
                         <dd class="col-6">{{ format_file_size(article.file_size) }}</dd>
-                        
+
                         <dt class="col-6">Submitted:</dt>
                         <dd class="col-6">{{ article.submitted_at.strftime('%b %d, %Y') }}</dd>
-                        
+
                         <dt class="col-6">Days Pending:</dt>
-                        <dd class="col-6">{{ (moment().date() - article.submitted_at.date()).days if moment else 'N/A' }}</dd>
+                        <dd class="col-6">{{ (moment().date() - article.submitted_at.date()).days if moment else 'N/A'
+                            }}</dd>
                     </dl>
                 </div>
             </div>

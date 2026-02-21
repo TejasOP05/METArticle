@@ -181,8 +181,14 @@ def download_article(id):
     """Download article file"""
     article = Article.query.get_or_404(id)
     
-    # Only allow download of approved articles
-    if not article.is_approved:
+    # Allow download if:
+    # 1. Article is approved
+    # 2. OR user is a supervisor/admin
+    # 3. OR user is the author of the article
+    can_download = article.is_approved or \
+                  (current_user.is_authenticated and (current_user.is_supervisor() or current_user.id == article.author_id))
+    
+    if not can_download:
         abort(404)
     
     # Increment download count
@@ -196,26 +202,41 @@ def download_article(id):
 
 @app.route('/preview/<int:id>')
 def preview_article(id):
-    """Preview article file inline"""
+    """Preview article file (or download if Word doc)"""
     article = Article.query.get_or_404(id)
     
-    # Allow preview of approved articles, or any article for supervisors
-    if not article.is_approved and not (current_user.is_authenticated and current_user.is_supervisor()):
+    # Permission check: approved OR supervisor OR author
+    can_view = article.is_approved or \
+               (current_user.is_authenticated and (current_user.is_supervisor() or current_user.id == article.author_id))
+    
+    if not can_view:
         abort(404)
     
-    # Security: Only allow PDF files for preview
-    if not article.filename.lower().endswith('.pdf'):
+    # Determine mimetype and behavior
+    ext = article.filename.lower().split('.')[-1]
+    if ext == 'pdf':
+        mimetype = 'application/pdf'
+        as_attachment = False
+    elif ext == 'docx':
+        mimetype = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        as_attachment = True  # Browsers can't preview docx inline
+    elif ext == 'doc':
+        mimetype = 'application/msword'
+        as_attachment = True
+    else:
         abort(404)
     
-    # Serve PDF for inline viewing with security headers
     response = send_from_directory(app.config['UPLOAD_FOLDER'], 
                                  article.filename,
-                                 as_attachment=False,
-                                 mimetype='application/pdf')
+                                 as_attachment=as_attachment,
+                                 mimetype=mimetype)
     
     # Add security headers
     response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['Content-Disposition'] = f'inline; filename="{article.original_filename}"'
+    if not as_attachment:
+        response.headers['Content-Disposition'] = f'inline; filename="{article.original_filename}"'
+    else:
+        response.headers['Content-Disposition'] = f'attachment; filename="{article.original_filename}"'
     
     return response
 

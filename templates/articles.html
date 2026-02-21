@@ -22,15 +22,15 @@
             <form method="GET" class="row g-3">
                 <div class="col-md-6">
                     <label for="search" class="form-label">Search Articles</label>
-                    <input type="text" class="form-control" id="search" name="search" 
-                           value="{{ search }}" placeholder="Search by title, abstract, or keywords...">
+                    <input type="text" class="form-control" id="search" name="search" value="{{ search }}"
+                        placeholder="Search by title, abstract, or keywords...">
                 </div>
                 <div class="col-md-4">
                     <label for="category" class="form-label">Category</label>
                     <select class="form-select" id="category" name="category">
                         <option value="">All Categories</option>
                         {% for cat in categories %}
-                        <option value="{{ cat }}" {% if cat == current_category %}selected{% endif %}>
+                        <option value="{{ cat }}" {% if cat==current_category %}selected{% endif %}>
                             {{ cat.replace('_', ' ').title() }}
                         </option>
                         {% endfor %}
@@ -78,18 +78,17 @@
                             <i class="fas fa-download me-1"></i>{{ article.download_count }}
                         </small>
                     </div>
-                    
+
                     <h5 class="card-title">
-                        <a href="{{ url_for('article_detail', id=article.id) }}" 
-                           class="text-decoration-none text-dark">
+                        <a href="{{ url_for('article_detail', id=article.id) }}" class="text-decoration-none text-dark">
                             {{ article.title }}
                         </a>
                     </h5>
-                    
+
                     <p class="card-text text-muted small">
                         {{ article.abstract[:200] }}...
                     </p>
-                    
+
                     {% if article.keywords %}
                     <div class="mb-3">
                         {% for keyword in article.keywords.split(',')[:3] %}
@@ -100,7 +99,7 @@
                         {% endif %}
                     </div>
                     {% endif %}
-                    
+
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
                             <small class="text-muted">
@@ -112,12 +111,11 @@
                             </small>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="{{ url_for('article_detail', id=article.id) }}" 
-                               class="btn btn-sm btn-outline-primary">
+                            <a href="{{ url_for('article_detail', id=article.id) }}"
+                                class="btn btn-sm btn-outline-primary">
                                 <i class="fas fa-eye me-1"></i>View
                             </a>
-                            <a href="{{ url_for('download_article', id=article.id) }}" 
-                               class="btn btn-sm btn-primary">
+                            <a href="{{ url_for('download_article', id=article.id) }}" class="btn btn-sm btn-primary">
                                 <i class="fas fa-download me-1"></i>Download
                             </a>
                         </div>
@@ -125,7 +123,8 @@
                 </div>
                 <div class="card-footer bg-transparent">
                     <small class="text-muted">
-                        <i class="fas fa-file-pdf me-1"></i>PDF • {{ format_file_size(article.file_size) }}
+                        <i class="fas fa-file-alt me-1"></i>{{ article.filename.split('.')[-1].upper() }} • {{
+                        format_file_size(article.file_size) }}
                     </small>
                 </div>
             </div>
@@ -139,7 +138,8 @@
         <ul class="pagination justify-content-center">
             {% if articles.has_prev %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('articles', page=articles.prev_num, search=search, category=current_category) }}">
+                <a class="page-link"
+                    href="{{ url_for('articles', page=articles.prev_num, search=search, category=current_category) }}">
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </li>
@@ -150,28 +150,30 @@
             {% endif %}
 
             {% for page_num in articles.iter_pages() %}
-                {% if page_num %}
-                    {% if page_num != articles.page %}
-                    <li class="page-item">
-                        <a class="page-link" href="{{ url_for('articles', page=page_num, search=search, category=current_category) }}">
-                            {{ page_num }}
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item active">
-                        <span class="page-link">{{ page_num }}</span>
-                    </li>
-                    {% endif %}
-                {% else %}
-                <li class="page-item disabled">
-                    <span class="page-link">…</span>
-                </li>
-                {% endif %}
+            {% if page_num %}
+            {% if page_num != articles.page %}
+            <li class="page-item">
+                <a class="page-link"
+                    href="{{ url_for('articles', page=page_num, search=search, category=current_category) }}">
+                    {{ page_num }}
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item active">
+                <span class="page-link">{{ page_num }}</span>
+            </li>
+            {% endif %}
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">…</span>
+            </li>
+            {% endif %}
             {% endfor %}
 
             {% if articles.has_next %}
             <li class="page-item">
-                <a class="page-link" href="{{ url_for('articles', page=articles.next_num, search=search, category=current_category) }}">
+                <a class="page-link"
+                    href="{{ url_for('articles', page=articles.next_num, search=search, category=current_category) }}">
                     <i class="fas fa-chevron-right"></i>
                 </a>
             </li>
@@ -213,9 +215,9 @@
 
 {% block scripts %}
 <script>
-// Auto-submit form on category change
-document.getElementById('category').addEventListener('change', function() {
-    this.form.submit();
-});
+    // Auto-submit form on category change
+    document.getElementById('category').addEventListener('change', function () {
+        this.form.submit();
+    });
 </script>
 {% endblock %}

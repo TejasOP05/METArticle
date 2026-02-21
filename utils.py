@@ -37,5 +37,6 @@ def format_file_size(size_bytes):
 
 def allowed_file(filename):
     """Check if file extension is allowed"""
+    ALLOWED_EXTENSIONS = {'doc', 'docx'}
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() == 'pdf'
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS

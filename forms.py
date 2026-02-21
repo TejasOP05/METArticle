@@ -62,9 +62,9 @@ class ArticleSubmissionForm(FlaskForm):
         ('business', 'Business'),
         ('other', 'Other')
     ], validators=[DataRequired()])
-    file = FileField('PDF File', validators=[
+    file = FileField('Word Document (.doc, .docx)', validators=[
         FileRequired(),
-        FileAllowed(['pdf'], 'Only PDF files are allowed!')
+        FileAllowed(['doc', 'docx'], 'Only Word documents (.doc, .docx) are allowed!')
     ])
     submit = SubmitField('Submit Article')
 

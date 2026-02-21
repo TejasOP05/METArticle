@@ -25,9 +25,9 @@
                         </span>
                         {% endif %}
                     </div>
-                    
+
                     <h1 class="h2 mb-3">{{ article.title }}</h1>
-                    
+
                     <!-- Author and Date Info -->
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -35,7 +35,8 @@
                             <p class="mb-0">
                                 <i class="fas fa-user me-2"></i>{{ article.author.full_name }}
                             </p>
-                            {% if article.author.email and (current_user.is_authenticated and current_user.is_supervisor()) %}
+                            {% if article.author.email and (current_user.is_authenticated and
+                            current_user.is_supervisor()) %}
                             <small class="text-muted">{{ article.author.email }}</small>
                             {% endif %}
                         </div>
@@ -72,7 +73,7 @@
                                 <small class="text-muted">File Size</small>
                             </div>
                             <div class="col-4">
-                                <div class="h4 text-primary">PDF</div>
+                                <div class="h4 text-primary">{{ article.filename.split('.')[-1].upper() }}</div>
                                 <small class="text-muted">Format</small>
                             </div>
                         </div>
@@ -125,20 +126,22 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    {% if article.is_approved %}
+                    {% if article.is_approved or (current_user.is_authenticated and (current_user.is_supervisor() or
+                    current_user.id == article.author_id)) %}
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-success btn-lg" 
-                                data-bs-toggle="modal" data-bs-target="#previewModal">
+                        {% if article.filename.lower().endswith('.pdf') %}
+                        <button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal"
+                            data-bs-target="#previewModal">
                             <i class="fas fa-eye me-2"></i>Preview PDF
                         </button>
-                        <a href="{{ url_for('download_article', id=article.id) }}" 
-                           class="btn btn-primary">
-                            <i class="fas fa-download me-2"></i>Download PDF
+                        {% endif %}
+                        <a href="{{ url_for('download_article', id=article.id) }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-download me-2"></i>Download {{ article.filename.split('.')[-1].upper() }}
                         </a>
                     </div>
                     <div class="text-center mt-3">
                         <small class="text-muted">
-                            <i class="fas fa-file-pdf me-1"></i>{{ article.original_filename }}
+                            <i class="fas fa-file-alt me-1"></i>{{ article.original_filename }}
                         </small>
                     </div>
                     {% else %}
@@ -160,12 +163,10 @@
                 </div>
                 <div class="card-body">
                     <div class="d-grid gap-2">
-                        <a href="{{ url_for('review_article', id=article.id) }}" 
-                           class="btn btn-warning">
+                        <a href="{{ url_for('review_article', id=article.id) }}" class="btn btn-warning">
                             <i class="fas fa-edit me-2"></i>Review Article
                         </a>
-                        <a href="{{ url_for('approval_dashboard') }}" 
-                           class="btn btn-outline-secondary">
+                        <a href="{{ url_for('approval_dashboard') }}" class="btn btn-outline-secondary">
                             <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
                         </a>
                     </div>
@@ -184,23 +185,23 @@
                     <dl class="row small">
                         <dt class="col-sm-4">Submitted:</dt>
                         <dd class="col-sm-8">{{ article.submitted_at.strftime('%b %d, %Y') }}</dd>
-                        
+
                         {% if article.reviewed_at %}
                         <dt class="col-sm-4">Reviewed:</dt>
                         <dd class="col-sm-8">{{ article.reviewed_at.strftime('%b %d, %Y') }}</dd>
                         {% endif %}
-                        
+
                         {% if article.reviewer %}
                         <dt class="col-sm-4">Reviewer:</dt>
                         <dd class="col-sm-8">{{ article.reviewer.full_name }}</dd>
                         {% endif %}
-                        
+
                         <dt class="col-sm-4">Category:</dt>
                         <dd class="col-sm-8">{{ article.category.replace('_', ' ').title() }}</dd>
-                        
+
                         <dt class="col-sm-4">File Size:</dt>
                         <dd class="col-sm-8">{{ format_file_size(article.file_size) }}</dd>
-                        
+
                         <dt class="col-sm-4">Downloads:</dt>
                         <dd class="col-sm-8">{{ article.download_count }}</dd>
                     </dl>
@@ -216,8 +217,8 @@
                 </div>
                 <div class="card-body">
                     <p class="text-muted small">Coming soon: Articles related to this category will be shown here.</p>
-                    <a href="{{ url_for('articles', category=article.category) }}" 
-                       class="btn btn-outline-primary btn-sm">
+                    <a href="{{ url_for('articles', category=article.category) }}"
+                        class="btn btn-outline-primary btn-sm">
                         <i class="fas fa-search me-1"></i>Browse {{ article.category.replace('_', ' ').title() }}
                     </a>
                 </div>
@@ -225,30 +226,29 @@
         </div>
     </div>
 
-    <!-- PDF Preview Modal -->
+    <!-- File Preview Modal -->
     <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl pdf-preview-modal">
+        <div class="modal-dialog modal-xl file-preview-modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="previewModalLabel">
-                        <i class="fas fa-file-pdf me-2"></i>{{ article.title }}
+                        <i class="fas fa-file-alt me-2"></i>{{ article.title }}
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-0">
                     {% if article.is_approved %}
-                    <iframe src="{{ url_for('preview_article', id=article.id) }}" 
-                            class="pdf-preview-iframe"
-                            title="{{ article.title }} - PDF Preview">
-                        <p>Your browser does not support PDFs. 
-                           <a href="{{ url_for('download_article', id=article.id) }}">Download the PDF</a> instead.</p>
+                    <iframe src="{{ url_for('preview_article', id=article.id) }}" class="file-preview-iframe"
+                        title="{{ article.title }} - File Preview">
+                        <p>Your browser does not support inline viewing.
+                            <a href="{{ url_for('download_article', id=article.id) }}">Download the file</a> instead.
+                        </p>
                     </iframe>
                     {% endif %}
                 </div>
                 <div class="modal-footer">
-                    <a href="{{ url_for('download_article', id=article.id) }}" 
-                       class="btn btn-primary">
-                        <i class="fas fa-download me-2"></i>Download PDF
+                    <a href="{{ url_for('download_article', id=article.id) }}" class="btn btn-primary">
+                        <i class="fas fa-download me-2"></i>Download File
                     </a>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>

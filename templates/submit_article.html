@@ -16,24 +16,27 @@
                 <div class="card-body p-4">
                     <form method="POST" enctype="multipart/form-data">
                         {{ form.hidden_tag() }}
-                        
+
                         <div class="mb-4">
                             {{ form.title.label(class="form-label fw-bold") }}
-                            {{ form.title(class="form-control" + (" is-invalid" if form.title.errors else ""), placeholder="Enter the full title of your article") }}
+                            {{ form.title(class="form-control" + (" is-invalid" if form.title.errors else ""),
+                            placeholder="Enter the full title of your article") }}
                             {% if form.title.errors %}
-                                <div class="invalid-feedback">
-                                    {% for error in form.title.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="invalid-feedback">
+                                {% for error in form.title.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                         </div>
 
                         <div class="mb-4">
                             {{ form.abstract.label(class="form-label fw-bold") }}
-                            {{ form.abstract(class="form-control" + (" is-invalid" if form.abstract.errors else ""), rows="6", placeholder="Provide a comprehensive abstract summarizing your research, methodology, and findings") }}
+                            {{ form.abstract(class="form-control" + (" is-invalid" if form.abstract.errors else ""),
+                            rows="6", placeholder="Provide a comprehensive abstract summarizing your research,
+                            methodology, and findings") }}
                             {% if form.abstract.errors %}
-                                <div class="invalid-feedback">
-                                    {% for error in form.abstract.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="invalid-feedback">
+                                {% for error in form.abstract.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                             <div class="form-text">Write a clear and concise abstract (recommended: 150-300 words)</div>
                         </div>
@@ -42,11 +45,13 @@
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     {{ form.keywords.label(class="form-label fw-bold") }}
-                                    {{ form.keywords(class="form-control" + (" is-invalid" if form.keywords.errors else ""), placeholder="e.g. machine learning, artificial intelligence, neural networks") }}
+                                    {{ form.keywords(class="form-control" + (" is-invalid" if form.keywords.errors else
+                                    ""), placeholder="e.g. machine learning, artificial intelligence, neural networks")
+                                    }}
                                     {% if form.keywords.errors %}
-                                        <div class="invalid-feedback">
-                                            {% for error in form.keywords.errors %}{{ error }}{% endfor %}
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        {% for error in form.keywords.errors %}{{ error }}{% endfor %}
+                                    </div>
                                     {% endif %}
                                     <div class="form-text">Separate keywords with commas</div>
                                 </div>
@@ -54,11 +59,12 @@
                             <div class="col-md-6">
                                 <div class="mb-4">
                                     {{ form.category.label(class="form-label fw-bold") }}
-                                    {{ form.category(class="form-select" + (" is-invalid" if form.category.errors else "")) }}
+                                    {{ form.category(class="form-select" + (" is-invalid" if form.category.errors else
+                                    "")) }}
                                     {% if form.category.errors %}
-                                        <div class="invalid-feedback">
-                                            {% for error in form.category.errors %}{{ error }}{% endfor %}
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        {% for error in form.category.errors %}{{ error }}{% endfor %}
+                                    </div>
                                     {% endif %}
                                 </div>
                             </div>
@@ -66,15 +72,16 @@
 
                         <div class="mb-4">
                             {{ form.file.label(class="form-label fw-bold") }}
-                            {{ form.file(class="form-control" + (" is-invalid" if form.file.errors else ""), accept=".pdf") }}
+                            {{ form.file(class="form-control" + (" is-invalid" if form.file.errors else ""),
+                            accept=".doc,.docx") }}
                             {% if form.file.errors %}
-                                <div class="invalid-feedback">
-                                    {% for error in form.file.errors %}{{ error }}{% endfor %}
-                                </div>
+                            <div class="invalid-feedback">
+                                {% for error in form.file.errors %}{{ error }}{% endfor %}
+                            </div>
                             {% endif %}
                             <div class="form-text">
                                 <i class="fas fa-info-circle me-1"></i>
-                                Only PDF files are accepted. Maximum file size: 16MB.
+                                Only Word documents (.doc, .docx) are accepted. Maximum file size: 16MB.
                             </div>
                         </div>
 

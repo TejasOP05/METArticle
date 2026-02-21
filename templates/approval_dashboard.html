@@ -83,7 +83,8 @@
                         {% for article in pending_articles %}
                         <tr>
                             <td>
-                                <strong>{{ article.title[:50] }}{% if article.title|length > 50 %}...{% endif %}</strong>
+                                <strong>{{ article.title[:50] }}{% if article.title|length > 50 %}...{% endif
+                                    %}</strong>
                                 <br>
                                 <small class="text-muted">{{ article.abstract[:100] }}...</small>
                             </td>
@@ -105,16 +106,16 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="{{ url_for('article_detail', id=article.id) }}" 
-                                       class="btn btn-sm btn-outline-primary" title="View Details">
+                                    <a href="{{ url_for('article_detail', id=article.id) }}"
+                                        class="btn btn-sm btn-outline-primary" title="View Details">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ url_for('download_article', id=article.id) }}" 
-                                       class="btn btn-sm btn-outline-secondary" title="Download PDF">
+                                    <a href="{{ url_for('download_article', id=article.id) }}"
+                                        class="btn btn-sm btn-outline-secondary" title="Download File">
                                         <i class="fas fa-download"></i>
                                     </a>
-                                    <a href="{{ url_for('review_article', id=article.id) }}" 
-                                       class="btn btn-sm btn-warning" title="Review">
+                                    <a href="{{ url_for('review_article', id=article.id) }}"
+                                        class="btn btn-sm btn-warning" title="Review">
                                         <i class="fas fa-gavel"></i>
                                     </a>
                                 </div>
@@ -159,7 +160,8 @@
                         {% for article in reviewed_articles %}
                         <tr>
                             <td>
-                                <strong>{{ article.title[:50] }}{% if article.title|length > 50 %}...{% endif %}</strong>
+                                <strong>{{ article.title[:50] }}{% if article.title|length > 50 %}...{% endif
+                                    %}</strong>
                             </td>
                             <td>
                                 {{ article.author.full_name }}
@@ -191,13 +193,13 @@
                             </td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a href="{{ url_for('article_detail', id=article.id) }}" 
-                                       class="btn btn-sm btn-outline-primary">
+                                    <a href="{{ url_for('article_detail', id=article.id) }}"
+                                        class="btn btn-sm btn-outline-primary">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     {% if article.is_approved %}
-                                    <a href="{{ url_for('download_article', id=article.id) }}" 
-                                       class="btn btn-sm btn-outline-success">
+                                    <a href="{{ url_for('download_article', id=article.id) }}"
+                                        class="btn btn-sm btn-outline-success">
                                         <i class="fas fa-download"></i>
                                     </a>
                                     {% endif %}

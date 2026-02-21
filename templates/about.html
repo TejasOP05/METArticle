@@ -1,169 +1,305 @@
 {% extends "base.html" %}
 
-{% block title %}About Us - Centre of Pharmacy Practice Excellence{% endblock %}
+{% block title %}About JHCPP - Journal of Hospital and Clinical Pharmacy Practice{% endblock %}
 
 {% block content %}
 <div class="container py-5">
     <!-- Hero Section -->
     <div class="row align-items-center mb-5">
-        <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-primary">About Centre of Pharmacy Practice Excellence</h1>
-            <p class="lead">Empowering academic excellence through collaborative research sharing and knowledge exchange.</p>
+        <div class="col-lg-8">
+            <h5 class="text-primary fw-bold mb-1">Department of Pharmacy Practice</h5>
+            <h4 class="text-muted mb-3">MET Institute of Pharmacy</h4>
+            <h1 class="display-4 fw-bold text-dark mb-3">Journal of Hospital and Clinical Pharmacy Practice (JHCPP)</h1>
+            <p class="lead text-secondary">An Open Access, Peer-Reviewed Academic Journal dedicated to advancing
+                excellence in pharmacy practice.</p>
+            <div class="d-flex gap-3 mt-4">
+                <span class="badge bg-success py-2 px-3"><i class="fas fa-check-circle me-1"></i> No APC (Free
+                    Publication)</span>
+                <span class="badge bg-primary py-2 px-3"><i class="fas fa-user-shield me-1"></i> Double-Blind Peer
+                    Review</span>
+            </div>
         </div>
-        <div class="col-lg-6 text-center">
-            <i class="fas fa-university display-1 text-primary opacity-75"></i>
+        <div class="col-lg-4 text-center d-none d-lg-block">
+            <i class="fas fa-microscope display-1 text-primary opacity-25"></i>
         </div>
     </div>
 
-    <!-- Mission & Vision -->
+    <!-- About the Journal -->
     <div class="row mb-5">
-        <div class="col-lg-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <i class="fas fa-bullseye fa-3x text-primary mb-3"></i>
-                    <h4>Our Mission</h4>
-                    <p>To create a comprehensive platform that facilitates the sharing, discovery, and collaboration of academic research, fostering innovation and knowledge exchange within the academic community.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <i class="fas fa-eye fa-3x text-primary mb-3"></i>
-                    <h4>Our Vision</h4>
-                    <p>To be the leading platform for academic research sharing, where students, researchers, and educators come together to advance knowledge and drive meaningful change in their respective fields.</p>
+        <div class="col-lg-12">
+            <div class="card shadow-sm border-0 bg-light p-4">
+                <h2 class="text-primary mb-4">About the Journal</h2>
+                <p>The Journal of Hospital and Clinical Pharmacy Practice (JHCPP) envisions becoming a respected
+                    academic platform dedicated to advancing excellence in hospital and clinical pharmacy practice. The
+                    journal aims to foster a culture of scientific inquiry, evidence-based practice, and scholarly
+                    writing among Pharm.D students, research scholars, academicians, and clinical practitioners.</p>
+
+                <h5 class="mt-4 mb-3">Our Vision is to:</h5>
+                <ul class="row list-unstyled g-3">
+                    <li class="col-md-6"><i class="fas fa-arrow-right text-primary me-2"></i> Promote high-quality
+                        research and academic writing in pharmacy practice.</li>
+                    <li class="col-md-6"><i class="fas fa-arrow-right text-primary me-2"></i> Encourage Pharm.D students
+                        to develop competencies in research methodology.</li>
+                    <li class="col-md-6"><i class="fas fa-arrow-right text-primary me-2"></i> Highlight the evolving
+                        role of clinical pharmacists globally.</li>
+                    <li class="col-md-6"><i class="fas fa-arrow-right text-primary me-2"></i> Contribute to the global
+                        understanding of the Pharm.D journey.</li>
+                </ul>
+
+                <div class="alert alert-info mt-4 mb-0">
+                    <i class="fas fa-info-circle me-2"></i><strong>Commitment:</strong> The journal is committed to
+                    academic integrity, ethical publishing standards, and accessibility. <strong>There are no Article
+                        Processing Charges (APC).</strong> Publication is completely free of cost to support and
+                    motivate student researchers.
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Features -->
-    <div class="row mb-5">
-        <div class="col-12">
-            <h2 class="text-center mb-4">Platform Features</h2>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <i class="fas fa-shield-alt fa-2x text-success mb-3"></i>
-                    <h5>Peer Review Process</h5>
-                    <p>All submissions undergo rigorous peer review by qualified academic supervisors to ensure quality and integrity.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <i class="fas fa-users fa-2x text-info mb-3"></i>
-                    <h5>Role-Based Access</h5>
-                    <p>Tailored experiences for students, authors, and supervisors with appropriate permissions and functionalities.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <i class="fas fa-search fa-2x text-warning mb-3"></i>
-                    <h5>Advanced Search</h5>
-                    <p>Powerful search and filtering capabilities to help users discover relevant research across multiple categories.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- How It Works -->
+    <!-- Scope of the Journal -->
     <div class="row mb-5">
         <div class="col-12">
-            <h2 class="text-center mb-4">How It Works</h2>
+            <h2 class="text-center mb-5">Scope of the Journal</h2>
         </div>
-        <div class="col-lg-3 mb-4">
-            <div class="text-center">
-                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                    <span class="h4 mb-0">1</span>
-                </div>
-                <h5 class="mt-3">Register</h5>
-                <p>Create an account as an author to start sharing your research with the community.</p>
-            </div>
-        </div>
-        <div class="col-lg-3 mb-4">
-            <div class="text-center">
-                <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                    <span class="h4 mb-0">2</span>
-                </div>
-                <h5 class="mt-3">Submit</h5>
-                <p>Upload your research article with detailed metadata for proper categorization and discovery.</p>
-            </div>
-        </div>
-        <div class="col-lg-3 mb-4">
-            <div class="text-center">
-                <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                    <span class="h4 mb-0">3</span>
-                </div>
-                <h5 class="mt-3">Review</h5>
-                <p>Academic supervisors review submissions for quality, originality, and academic standards.</p>
-            </div>
-        </div>
-        <div class="col-lg-3 mb-4">
-            <div class="text-center">
-                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
-                    <span class="h4 mb-0">4</span>
-                </div>
-                <h5 class="mt-3">Publish</h5>
-                <p>Approved articles are published and made available for the global academic community.</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- User Roles -->
-    <div class="row mb-5">
-        <div class="col-12">
-            <h2 class="text-center mb-4">User Roles</h2>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm border-primary">
-                <div class="card-header bg-primary text-white text-center">
-                    <i class="fas fa-user-graduate fa-2x mb-2"></i>
-                    <h5 class="mb-0">Students</h5>
-                </div>
+        <!-- Hospital Pharmacy -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-top border-primary border-4">
                 <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Browse approved articles</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Download research papers</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Search by category and keywords</li>
-                        <li><i class="fas fa-check text-success me-2"></i>No registration required</li>
+                    <h5 class="card-title text-primary"><i class="fas fa-hospital-user me-2"></i>Hospital Pharmacy</h5>
+                    <ul class="small mt-3">
+                        <li>Drug utilization studies</li>
+                        <li>Medication safety and management</li>
+                        <li>Antimicrobial stewardship</li>
+                        <li>Hospital formulary management</li>
+                        <li>Clinical audit reports</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm border-success">
-                <div class="card-header bg-success text-white text-center">
-                    <i class="fas fa-pen-fancy fa-2x mb-2"></i>
-                    <h5 class="mb-0">Authors</h5>
-                </div>
+
+        <!-- Clinical Pharmacy -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-top border-success border-4">
                 <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Submit research articles</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Track submission status</li>
-                        <li><i class="fas fa-check text-success me-2"></i>View download statistics</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Manage article portfolio</li>
+                    <h5 class="card-title text-success"><i class="fas fa-user-md me-2"></i>Clinical Pharmacy</h5>
+                    <ul class="small mt-3">
+                        <li>Clinical interventions & outcomes</li>
+                        <li>Evidence-based pharmacotherapy</li>
+                        <li>Patient counseling</li>
+                        <li>Pharmaceutical care</li>
+                        <li>Interdisciplinary collaboration</li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm border-warning">
-                <div class="card-header bg-warning text-white text-center">
-                    <i class="fas fa-user-tie fa-2x mb-2"></i>
-                    <h5 class="mb-0">Supervisors</h5>
-                </div>
+
+        <!-- PK/PD -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-top border-info border-4">
                 <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Review submitted articles</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Approve or reject submissions</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Provide feedback to authors</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Monitor platform quality</li>
+                    <h5 class="card-title text-info"><i class="fas fa-flask me-2"></i>PK & PD</h5>
+                    <ul class="small mt-3">
+                        <li>Clinical pharmacokinetic modeling</li>
+                        <li>Dose optimization studies</li>
+                        <li>Therapeutic drug monitoring</li>
+                        <li>PK/PD correlations</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pharmacovigilance -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm border-top border-warning border-4">
+                <div class="card-body">
+                    <h5 class="card-title text-warning"><i class="fas fa-shield-virus me-2"></i>Pharmacovigilance</h5>
+                    <ul class="small mt-3">
+                        <li>ADR reporting and analysis</li>
+                        <li>Signal detection studies</li>
+                        <li>Drug safety evaluations</li>
+                        <li>Post-marketing surveillance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pharmacy Practice Research -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm border-top border-danger border-4">
+                <div class="card-body">
+                    <h5 class="card-title text-danger"><i class="fas fa-search-plus me-2"></i>Practice Research</h5>
+                    <ul class="small mt-3">
+                        <li>Healthcare policy research</li>
+                        <li>Pharmacy education research</li>
+                        <li>Community/Ambulatory care</li>
+                        <li>Medication adherence studies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manuscripts Accepted -->
+    <div class="row mb-5">
+        <div class="col-lg-12">
+            <div class="card shadow-sm border-0 bg-dark text-white p-4">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h3>Types of Manuscripts Accepted</h3>
+                        <p class="text-light-emphasis">We welcome original and scholarly contributions in various
+                            formats.</p>
+                        <div class="row mt-3">
+                            <div class="col-6 col-md-4 mb-2"><i class="fas fa-check text-success me-2"></i>Original
+                                Research</div>
+                            <div class="col-6 col-md-4 mb-2"><i class="fas fa-check text-success me-2"></i>Review
+                                Articles</div>
+                            <div class="col-6 col-md-4 mb-2"><i class="fas fa-check text-success me-2"></i>Case Reports
+                            </div>
+                            <div class="col-6 col-md-4 mb-2"><i class="fas fa-check text-success me-2"></i>Short Comms
+                            </div>
+                            <div class="col-6 col-md-4 mb-2"><i class="fas fa-check text-success me-2"></i>Letters to
+                                Editor</div>
+                            <div class="col-6 col-md-4 mb-2"><i class="fas fa-check text-success me-2"></i>Clinical
+                                Images</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center mt-3 mt-md-0">
+                        <a href="{{ url_for('submit_article') }}" class="btn btn-outline-light btn-lg">Submit Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructions to Authors -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Instructions to Authors</h2>
+        </div>
+        <div class="col-12">
+            <div class="accordion shadow-sm" id="authorAccordion">
+                <!-- Requirements -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne">
+                            1. General Submission Requirements
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#authorAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Manuscripts must be original and not under consideration elsewhere.</li>
+                                <li>Written in clear, concise academic English.</li>
+                                <li>Authors must adhere to ethical research and publication practices.</li>
+                                <li>Plagiarism (including self-plagiarism) is strictly prohibited.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Structure -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo">
+                            2. Manuscript Structure
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#authorAccordion">
+                        <div class="accordion-body">
+                            <h6 class="fw-bold">A. Original Research Articles</h6>
+                            <p class="small">Title Page, Structured Abstract (250–300 words), Keywords (3–6),
+                                Introduction, Methods, Results, Discussion, Conclusion, References.</p>
+                            <h6 class="fw-bold mt-3">B. Review Articles</h6>
+                            <p class="small">Unstructured Abstract, Introduction, Methodology (for systematic reviews),
+                                Thematic Discussion, Conclusion, References.</p>
+                            <h6 class="fw-bold mt-3">C. Case Reports</h6>
+                            <p class="small">Abstract, Introduction, Case Presentation, Discussion, Conclusion, Patient
+                                Consent Statement, References.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Formatting -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree">
+                            3. Formatting Guidelines
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#authorAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li><strong>Format:</strong> Microsoft Word (.doc, .docx)</li>
+                                <li><strong>Font:</strong> Times New Roman, Size 12</li>
+                                <li><strong>Spacing:</strong> 1.5 Line Spacing, 1 inch Margins</li>
+                                <li><strong>References:</strong> Vancouver style (numbered citation format)</li>
+                                <li><strong>Media:</strong> Tables and Figures must be numbered and editable.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Policies Detail -->
+    <div class="row mb-5">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="text-primary border-bottom pb-2 mb-3">Journal Policies</h5>
+                    <div class="mb-3">
+                        <h6><i class="fas fa-shield-alt text-success me-2"></i>Ethics & Plagiarism</h6>
+                        <p class="small text-muted">We adhere to international ethical standards. Plagiarism index must
+                            be <strong>≤15%</strong> (excluding references).</p>
+                    </div>
+                    <div class="mb-3">
+                        <h6><i class="fas fa-users-cog text-primary me-2"></i>Authorship Criteria</h6>
+                        <p class="small text-muted">Based on substantial contributions, drafting, final approval, and
+                            accountability. Ghost authorship is prohibited.</p>
+                    </div>
+                    <div class="mb-0">
+                        <h6><i class="fas fa-lock text-warning me-2"></i>Open Access</h6>
+                        <p class="small text-muted">Authors retain copyright but grant publishing rights. No Article
+                            Processing Charges (APC).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="text-primary border-bottom pb-2 mb-3">Peer Review Process</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded-circle p-2 me-3"
+                                style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
+                                1</div>
+                            <span class="small">Initial Technical & Plagiarism Screening</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded-circle p-2 me-3"
+                                style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
+                                2</div>
+                            <span class="small">Editorial Assessment</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded-circle p-2 me-3"
+                                style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
+                                3</div>
+                            <span class="small">Double-Blind Peer Review</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary text-white rounded-circle p-2 me-3"
+                                style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
+                                4</div>
+                            <span class="small">Final Editorial Decision</span>
+                        </div>
+                    </div>
+                    <p class="mt-4 small text-muted font-italic">Timeline: Typical review takes 4–8 weeks.</p>
                 </div>
             </div>
         </div>
@@ -171,34 +307,32 @@
 
     <!-- Contact Information -->
     <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="card shadow-sm">
-                <div class="card-header bg-dark text-white text-center">
-                    <h4 class="mb-0">
-                        <i class="fas fa-envelope me-2"></i>Get in Touch
-                    </h4>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <h6><i class="fas fa-envelope me-2 text-primary"></i>Email</h6>
-                            <p class="mb-0">info@metarticles.edu</p>
-                            <small class="text-muted">For general inquiries and support</small>
+        <div class="col-lg-12">
+            <div class="card shadow-md border-0 bg-dark text-white">
+                <div class="card-body p-5">
+                    <div class="row align-items-center">
+                        <div class="col-md-7">
+                            <h2 class="mb-4">Contact Us</h2>
+                            <h5 class="text-primary">Department of Pharmacy Practice</h5>
+                            <p class="mb-1">MET Institute of Pharmacy</p>
+                            <p class="small text-light-emphasis">MET League of Colleges | Bhujbal Knowledge City</p>
+                            <p class="small mb-4">Adgaon, Nashik - 422 003 | Maharashtra, India</p>
+
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-phone-alt text-primary me-3"></i>
+                                <span>+91 9881100099</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-envelope text-primary me-3"></i>
+                                <span>info@metarticles.edu</span>
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <h6><i class="fas fa-phone me-2 text-primary"></i>Phone</h6>
-                            <p class="mb-0">+1 (555) 123-4567</p>
-                            <small class="text-muted">Office hours: 9 AM - 5 PM EST</small>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <h6><i class="fas fa-map-marker-alt me-2 text-primary"></i>Address</h6>
-                            <p class="mb-0">MET Campus, Research Wing</p>
-                            <small class="text-muted">Room 301, Academic Building</small>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <h6><i class="fas fa-clock me-2 text-primary"></i>Support</h6>
-                            <p class="mb-0">24/7 Online Support</p>
-                            <small class="text-muted">Technical assistance available</small>
+                        <div class="col-md-5 mt-4 mt-md-0 text-center">
+                            <div class="p-4 bg-secondary bg-opacity-10 rounded">
+                                <i class="fas fa-map-marked-alt display-2 mb-3 text-primary"></i>
+                                <p class="mb-0 fw-bold">Nashik Campus</p>
+                                <small>Academic Wing, 2nd Floor</small>
+                            </div>
                         </div>
                     </div>
                 </div>

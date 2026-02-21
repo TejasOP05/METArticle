@@ -104,9 +104,8 @@
                                 {% endif %}
                             </td>
                             <td>
-                                <form method="POST" action="{{ url_for('promote_user', user_id=author.id) }}" 
-                                      onsubmit="return confirm('Are you sure you want to promote {{ author.full_name }} to supervisor role?')" 
-                                      class="d-inline">
+                                <form method="POST" action="{{ url_for('promote_user', user_id=author.id) }}"
+                                    class="d-inline">
                                     <button type="submit" class="btn btn-success btn-sm" title="Promote to Supervisor">
                                         <i class="fas fa-arrow-up me-1"></i>Promote
                                     </button>
@@ -155,7 +154,8 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <div class="avatar-circle bg-warning text-white me-3">
-                                        {{ supervisor.first_name[0] if supervisor.first_name else supervisor.username[0] }}
+                                        {{ supervisor.first_name[0] if supervisor.first_name else supervisor.username[0]
+                                        }}
                                     </div>
                                     <div>
                                         <strong>{{ supervisor.full_name }}</strong>
@@ -187,11 +187,12 @@
                                 <span class="badge bg-secondary">{{ supervisor.articles|length }} articles</span>
                             </td>
                             <td>
-                                {% if current_user.is_admin() and supervisor.id != current_user.id and supervisor.role != 'admin' %}
-                                <form method="POST" action="{{ url_for('demote_user', user_id=supervisor.id) }}" 
-                                      onsubmit="return confirm('Are you sure you want to demote {{ supervisor.full_name }} to author role?')" 
-                                      class="d-inline">
-                                    <button type="submit" class="btn btn-outline-warning btn-sm" title="Demote to Author">
+                                {% if current_user.is_admin() and supervisor.id != current_user.id and supervisor.role
+                                != 'admin' %}
+                                <form method="POST" action="{{ url_for('demote_user', user_id=supervisor.id) }}"
+                                    class="d-inline">
+                                    <button type="submit" class="btn btn-outline-warning btn-sm"
+                                        title="Demote to Author">
                                         <i class="fas fa-arrow-down me-1"></i>Demote
                                     </button>
                                 </form>
@@ -228,19 +229,24 @@
                 <div class="col-md-6">
                     <h6 class="text-primary">Promoting Authors to Supervisors:</h6>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-check text-success me-2"></i>Only supervisors and admins can promote users</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Only supervisors and admins can promote users
+                        </li>
                         <li><i class="fas fa-check text-success me-2"></i>Authors gain access to approval dashboard</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Supervisors can review and approve articles</li>
-                        <li><i class="fas fa-check text-success me-2"></i>Promoted users retain all author privileges</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Supervisors can review and approve articles
+                        </li>
+                        <li><i class="fas fa-check text-success me-2"></i>Promoted users retain all author privileges
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-6">
                     <h6 class="text-warning">Demoting Supervisors:</h6>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Only admins can demote supervisors</li>
+                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Only admins can demote
+                            supervisors</li>
                         <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Cannot demote yourself</li>
                         <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Cannot demote other admins</li>
-                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Demoted users become regular authors</li>
+                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i>Demoted users become regular
+                            authors</li>
                     </ul>
                 </div>
             </div>
@@ -249,16 +255,15 @@
 </div>
 
 <style>
-.avatar-circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 16px;
-}
+    .avatar-circle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 16px;
+    }
 </style>
 {% endblock %}
-
